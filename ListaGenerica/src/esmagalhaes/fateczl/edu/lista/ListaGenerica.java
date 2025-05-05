@@ -74,10 +74,10 @@ public class ListaGenerica<T> {
 
 	public void remove(int pos) throws Exception {
 		if (isEmpty()) {
-			throw new IllegalStateException("Lista Vazia");
+			throw new Exception("Lista Vazia");
 		}
 		if (pos < 0 || pos >= size()) {
-			throw new IndexOutOfBoundsException("Posição inválida");
+			throw new Exception("Posição inválida");
 		}
 		if (pos == 0) {
 			removeFirst();
@@ -93,7 +93,7 @@ public class ListaGenerica<T> {
 			throw new Exception("Lista Vazia");
 		}
 		if (pos < 0 || pos >= size()) {
-			throw new IndexOutOfBoundsException("Posição inválida");
+			throw new Exception("Posição inválida");
 		}
 		Node<T> auxiliar = primeiro;
 		for (int i = 0; i < pos; i++) {
@@ -104,6 +104,15 @@ public class ListaGenerica<T> {
 
 	public T get(int pos) throws Exception {
 		return getNode(pos).dado;
+	}
+
+	public void clean() throws Exception {
+		if (isEmpty()) {
+			throw new Exception("Lista Vazia");
+		}
+		for (int i = (size() - 1); i <= 0; i--) {
+			remove(i);
+		}
 	}
 
 }
